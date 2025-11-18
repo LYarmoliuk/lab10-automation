@@ -25,4 +25,5 @@ jobs:
       - name: Run Cypress tests (Electron)
         uses: cypress-io/github-action@v6
         with:
-          command: npx cypress run --browser electron
+          browser: electron
+          command: npx cypress run
