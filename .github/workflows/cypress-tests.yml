@@ -22,8 +22,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Cypress tests
+      - name: Run Cypress tests (Electron)
         uses: cypress-io/github-action@v6
         with:
-          browser: chrome
-          command: npx cypress run
+          command: npx cypress run --browser electron
