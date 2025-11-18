@@ -2,31 +2,28 @@ name: Run Cypress Tests
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-  cypress-tests:
+  cypress-run:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      # Офіційний Cypress GitHub Action ❤️
-      - name: Run Cypress
+      - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
-          build: npm run build
-          start: npm start
           browser: chrome
-          headless: true
+          command: npx cypress run
